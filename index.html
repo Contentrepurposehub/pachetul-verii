@@ -31,6 +31,27 @@
   .price-total{display:flex;justify-content:space-between;align-items:center;border-top:2px dashed #d8e8f3;margin-top:10px;padding:12px 6px 0;font-size:18px;font-weight:800;color:var(--navy)}
   .price-total .big{font-size:30px;color:var(--orange)}
   .save{background:#fff4e8;color:var(--orange-d);font-weight:700;border-radius:8px;padding:6px;margin-top:10px;font-size:14px}
+  .checks{list-style:none;margin:16px 0 4px;text-align:left}
+  .checks li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;margin-bottom:9px;color:var(--text)}
+  .checks li:before{content:"✓";color:var(--green);font-weight:900;font-size:17px;line-height:1.3}
+  .checks b{color:var(--navy)}
+  .badrow{display:flex;gap:6px;justify-content:center;margin:14px 0 2px;text-align:center}
+  .badrow div{flex:1;font-size:11.5px;font-weight:600;color:var(--navy);line-height:1.3}
+  .badrow .ic{font-size:22px;display:block;margin-bottom:2px}
+  .kit{background:#fff;border:2px solid #e4eef6;border-radius:16px;overflow:hidden;margin-top:8px}
+  .kit-item{display:flex;gap:14px;align-items:center;padding:16px;border-bottom:1px solid #eef4f9}
+  .kit-item:last-child{border-bottom:none}
+  .kit-item img{width:78px;height:78px;object-fit:contain;border-radius:10px;background:#f7fbfd}
+  .kit-item .qty{background:var(--blue);color:#fff;font-size:12px;font-weight:800;border-radius:6px;padding:2px 7px;display:inline-block;margin-bottom:3px}
+  .kit-item b{color:var(--navy);display:block}
+  .kit-item span{font-size:13.5px;color:var(--muted)}
+  .kit-foot{background:var(--sky);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:800;color:var(--navy)}
+  .kit-foot .big{font-size:24px;color:var(--orange)}
+  .reviews{display:grid;gap:12px}
+  .rev{background:#fff;border:1.5px solid #e4eef6;border-radius:14px;padding:15px}
+  .rev .stars{color:#ffb400;font-size:15px;letter-spacing:1px}
+  .rev .who{font-size:13px;color:var(--muted);margin-top:6px;font-weight:600}
+  .rev p{font-size:14.5px;margin-top:5px}
   section{padding:26px 0}
   h2{font-size:21px;color:var(--navy);text-align:center;margin-bottom:16px}
   .feature{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
@@ -88,6 +109,20 @@
     </div>
 
     <a class="cta" href="#comanda">COMANDĂ ACUM CU PLATA LA LIVRARE<small>Plătești doar când primești coletul</small></a>
+
+    <div class="badrow">
+      <div><span class="ic">🚚</span>Transport<br>GRATUIT</div>
+      <div><span class="ic">📦</span>Plata la<br>livrare</div>
+      <div><span class="ic">🔄</span>Retur în<br>14 zile</div>
+      <div><span class="ic">⚡</span>Livrare<br>24-48h</div>
+    </div>
+
+    <ul class="checks">
+      <li><span><b>24 de ore de răcoare</b> cu o singură încărcare — fără priză, fără facturi.</span></li>
+      <li><span><b>Telescopic, de la 30 cm la 1 metru</b> — ventilator de birou și de podea în unul singur.</span></li>
+      <li><span><b>Se pliază cât o farfurie</b> — îl iei oriunde: birou, camping, plajă, mașină.</span></li>
+      <li><span><b>Ventilator de mână CADOU</b> la fiecare comandă (valoare 99 lei).</span></li>
+    </ul>
   </div>
 </header>
 
@@ -126,6 +161,39 @@
       <source src="video/portabil.mp4" type="video/mp4">
     </video>
     <img src="img/portabil-specificatii.jpg" alt="Specificații ventilator de mână: reîncărcabil USB, până la 10h utilizare" loading="lazy" style="width:100%;border-radius:16px;margin-top:14px">
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Ce conține pachetul</h2>
+    <div class="kit">
+      <div class="kit-item">
+        <img src="img/ventilator-windwaver-alb-1x1.jpg" alt="Ventilator WindWaver telescopic">
+        <div>
+          <span class="qty">1 BUC</span>
+          <b>Ventilator telescopic WindWaver</b>
+          <span>Acumulator 7200mAh, până la 24h, telescopic 30cm–1m, 4 viteze, cap rotativ 180°, pliabil.</span>
+        </div>
+      </div>
+      <div class="kit-item">
+        <img src="img/ventilator-mana-alb-1x1.jpg" alt="Ventilator de mână turbo">
+        <div>
+          <span class="qty">CADOU</span>
+          <b>Ventilator de mână turbo <s style="color:#b0bec9;font-weight:600">99 lei</s></b>
+          <span>Reîncărcabil USB, pliabil, perfect pentru geantă, mașină, plajă sau birou.</span>
+        </div>
+      </div>
+      <div class="kit-item">
+        <div style="width:78px;height:78px;border-radius:10px;background:#f7fbfd;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0">🔌</div>
+        <div>
+          <span class="qty">INCLUS</span>
+          <b>Cablu de încărcare USB</b>
+          <span>Îl încarci de la orice priză USB, laptop sau baterie externă — ca pe un telefon.</span>
+        </div>
+      </div>
+    </div>
+    <div class="kit-foot"><span>Valoare totală 2̶4̶4̶ ̶l̶e̶i̶ → azi:</span><span class="big">149 lei</span></div>
   </div>
 </section>
 
