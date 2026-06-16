@@ -8,7 +8,11 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'method' });
   }
 
-  const { nume, telefon, localitate, adresa, bump, total, tip } = req.body || {};
+  const {
+    nume, telefon, localitate, adresa, bump, fbt, total, tip,
+    email, cui, livrare, plata, facturare, newsletter
+  } = req.body || {};
+  const hasRgbBump = Boolean(bump || fbt);
 
   if (tip !== 'upsell' && (!nume || !telefon || !adresa)) {
     return res.status(400).json({ ok: false, error: 'missing fields' });
@@ -25,11 +29,17 @@ module.exports = async function handler(req, res) {
         '🆕 COMANDĂ NOUĂ — Pachetul Verii',
         `👤 ${nume}`,
         `📞 ${telefon}`,
+        email ? `✉️ ${email}` : null,
         `📍 ${localitate}`,
         `🏠 ${adresa}`,
-        `🎁 Bump portofel RFID: ${bump ? 'DA (+39 lei)' : 'nu'}`,
-        `💰 TOTAL ramburs: ${total} lei`,
-      ];
+        cui ? `🧾 CUI: ${cui}` : null,
+        `🚚 Livrare: ${livrare || 'curier'}`,
+        `💳 Plată: ${plata || 'ramburs'}`,
+        `🏢 Facturare: ${facturare || 'aceeasi'}`,
+        `📩 Newsletter: ${newsletter ? 'DA' : 'nu'}`,
+        `🎁 Bump ventilator RGB portabil: ${hasRgbBump ? 'DA (+91 lei)' : 'nu'}`,
+        `💰 TOTAL: ${total} lei`,
+      ].filter(Boolean);
   const text = lines.join('\n');
 
   // Comanda apare mereu în logurile Vercel, chiar dacă Telegram nu e configurat.

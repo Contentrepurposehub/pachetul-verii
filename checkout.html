@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizează comanda - Pachet Răcoare Vară</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--soft:#f6f7f9;--brand:#81d4c8;--brand-d:#0f3f38;--cta:#ff6a13;--green:#16834c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.5}
+  a{color:inherit}
+  .top{border-bottom:1px solid var(--line);padding:18px 0}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+  .logo{font-weight:900;font-size:22px;text-decoration:none}
+  .logo span{color:#2fb9aa}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:42px;align-items:start;padding:32px 0 48px}
+  .summary{position:sticky;top:18px;background:var(--soft);border-left:1px solid var(--line);padding:24px;border-radius:18px}
+  h1{font-size:26px;margin-bottom:18px}
+  h2{font-size:19px;margin:26px 0 12px}
+  .express{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center;font-weight:800;background:#fff;margin-bottom:16px}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;font-weight:800;text-transform:uppercase;margin:18px 0}
+  .divider:before,.divider:after{content:"";height:1px;background:var(--line);flex:1}
+  label{display:block;font-size:13px;font-weight:800;margin:12px 0 5px}
+  input,select{width:100%;padding:13px;border:1.5px solid #d8dee6;border-radius:9px;font-size:16px;background:#fff}
+  input:focus,select:focus{outline:none;border-color:#2fb9aa}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .checkline{display:flex;gap:9px;align-items:center;margin-top:10px;color:#374151;font-size:14px}
+  .checkline input{width:18px;height:18px}
+  .option{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:14px;background:#fff;margin-bottom:10px;cursor:pointer}
+  .option input{width:20px;height:20px;margin-top:2px;accent-color:#2fb9aa}
+  .option b{display:block}
+  .option span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  .option.active{border-color:#2fb9aa;background:#f0fbf9}
+  .card-note{display:none;background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:12px;padding:13px;font-size:14px;margin-top:8px}
+  .card-note.show{display:block}
+  .product{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  .product img{width:64px;height:64px;border-radius:10px;object-fit:cover;background:#fff;border:1px solid var(--line)}
+  .product b{font-size:14px}
+  .product span{font-size:13px;color:var(--muted)}
+  .row{display:flex;justify-content:space-between;gap:16px;margin-top:13px;color:#4b5563}
+  .total{display:flex;justify-content:space-between;gap:16px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-weight:900;font-size:22px}
+  .submit{width:100%;margin-top:22px;border:0;border-radius:12px;background:var(--cta);color:#fff;padding:16px 18px;font-size:17px;font-weight:900;cursor:pointer;box-shadow:0 16px 34px rgba(255,106,19,.28);animation:ctaPulse 1.8s ease-in-out infinite}
+  .submit:disabled{opacity:.6;cursor:not-allowed;animation:none}
+  .spin,.err{display:none;margin-top:10px;text-align:center;font-weight:800}
+  .spin{color:#2f6f68}
+  .err{color:#c0392b}
+  .legal{margin-top:26px;color:var(--muted);font-size:12px;display:flex;gap:12px;flex-wrap:wrap}
+  @keyframes ctaPulse{0%,100%{transform:scale(1);box-shadow:0 16px 34px rgba(255,106,19,.28)}50%{transform:scale(1.015);box-shadow:0 20px 46px rgba(255,106,19,.42)}}
+  @media (max-width:860px){
+    .layout{grid-template-columns:1fr;gap:24px;padding-top:20px}
+    .summary{position:static;order:-1;border-left:0}
+    .grid2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html">Răcoare<span>.ro</span></a>
+  </div>
+</header>
+
+<main class="wrap layout">
+  <section>
+    <h1>Finalizează comanda</h1>
+
+    <div class="express">Finalizare comandă expresă</div>
+    <div class="divider">sau</div>
+
+    <form id="checkoutForm" autocomplete="on">
+      <h2>Contact</h2>
+      <label for="email">E-mail</label>
+      <input id="email" name="email" type="email" placeholder="ex: nume@email.com" autocomplete="email">
+      <label class="checkline"><input type="checkbox" id="newsletter"> Doresc să primesc e-mailuri cu noutăți și oferte</label>
+
+      <h2>Livrare</h2>
+      <label for="tara">Țară/Regiune</label>
+      <select id="tara" name="tara">
+        <option>România</option>
+      </select>
+
+      <div class="grid2">
+        <div>
+          <label for="prenume">Prenume *</label>
+          <input id="prenume" name="prenume" type="text" required autocomplete="given-name">
+        </div>
+        <div>
+          <label for="nume">Nume *</label>
+          <input id="nume" name="nume" type="text" required autocomplete="family-name">
+        </div>
+      </div>
+
+      <label for="cui">Factura pe persoană juridică - CUI (opțional)</label>
+      <input id="cui" name="cui" type="text" placeholder="ex: RO12345678">
+
+      <label for="strada">Strada și numărul *</label>
+      <input id="strada" name="strada" type="text" required autocomplete="street-address">
+
+      <label for="apartament">Apartament, bloc, scară (opțional)</label>
+      <input id="apartament" name="apartament" type="text">
+
+      <div class="grid2">
+        <div>
+          <label for="codPostal">Cod poștal</label>
+          <input id="codPostal" name="codPostal" type="text" autocomplete="postal-code">
+        </div>
+        <div>
+          <label for="localitate">Localitate *</label>
+          <input id="localitate" name="localitate" type="text" required autocomplete="address-level2">
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <label for="judet">Județ *</label>
+          <input id="judet" name="judet" type="text" required placeholder="ex: Bistrița-Năsăud" autocomplete="address-level1">
+        </div>
+        <div>
+          <label for="telefon">Telefon *</label>
+          <input id="telefon" name="telefon" type="tel" required pattern="[0-9 +()-]{9,}" autocomplete="tel">
+        </div>
+      </div>
+
+      <label class="checkline"><input type="checkbox" id="saveInfo"> Salvează aceste informații pentru data viitoare</label>
+
+      <h2>Plată</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:10px">Toate tranzacțiile sunt securizate și criptate.</p>
+      <label class="option active">
+        <input type="radio" name="plata" value="ramburs" checked>
+        <span><b>Ramburs - numerar la livrare</b><span>Plătești curierului când primești coletul.</span></span>
+      </label>
+      <label class="option">
+        <input type="radio" name="plata" value="card">
+        <span><b>Card de credit/debit</b><span>Primești link de plată securizat după confirmarea comenzii.</span></span>
+      </label>
+      <div class="card-note" id="cardNote">Notă: plata online cu cardul trebuie conectată la un procesator real (ex: Netopia, Stripe, EuPlatesc). Momentan comanda se înregistrează și marchează metoda aleasă ca „Card”.</div>
+
+      <h2>Adresă de facturare</h2>
+      <label class="option active">
+        <input type="radio" name="facturare" value="aceeasi" checked>
+        <span><b>La fel ca adresa de expediere</b></span>
+      </label>
+      <label class="option">
+        <input type="radio" name="facturare" value="diferita">
+        <span><b>Folosește o adresă de facturare diferită</b></span>
+      </label>
+
+      <button class="submit" id="submitBtn" type="submit">Finalizează comanda</button>
+      <div class="spin" id="spin">Se trimite comanda...</div>
+      <div class="err" id="err">A apărut o problemă. Sună-ne direct la <a href="tel:+40700000000">07XX XXX XXX</a>.</div>
+    </form>
+
+    <div class="legal">
+      <a href="termeni.html">Termeni de utilizare</a>
+      <a href="confidentialitate.html">Politica de confidențialitate</a>
+      <a href="termeni.html">Politica de rambursare</a>
+      <a href="mailto:mariusgalatan1@gmail.com">Contact</a>
+    </div>
+  </section>
+
+  <aside class="summary">
+    <div class="product">
+      <img src="video/principal-poster.jpg" alt="Pachet Răcoare Vară">
+      <div><b>Pachet Răcoare Vară</b><span>WindWaver + ventilator de mână cadou</span></div>
+      <strong>195 lei</strong>
+    </div>
+    <div class="product" id="bumpProduct" style="display:none;margin-top:18px">
+      <img src="img/rgb-fan-thumb.jpg" alt="Ventilator RGB">
+      <div><b>Ventilator Portabil RGB</b><span>Adăugat în același colet</span></div>
+      <strong>91 lei</strong>
+    </div>
+
+    <div class="row"><span>Subtotal</span><span id="subtotal">195 lei</span></div>
+    <div class="row"><span>Transport</span><span id="shipping">23 lei</span></div>
+    <div class="total"><span>Total</span><span id="total">195 lei</span></div>
+  </aside>
+</main>
+
+<script>
+  var META_PIXEL_ID = "";
+  var BASE_PRICE = 195;
+  var FBT_PRICE = 91;
+  var SHIPPING_PRICE = 23;
+  var params = new URLSearchParams(location.search);
+  var hasBump = params.get('fbt') === '1';
+
+  function total(){
+    return BASE_PRICE + (hasBump ? FBT_PRICE : 0) + SHIPPING_PRICE;
+  }
+
+  function updateSummary(){
+    document.getElementById('bumpProduct').style.display = hasBump ? 'grid' : 'none';
+    document.getElementById('subtotal').textContent = (BASE_PRICE + (hasBump ? FBT_PRICE : 0)) + ' lei';
+    document.getElementById('total').textContent = total() + ' lei';
+  }
+
+  function selected(name){
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+
+  function syncOptions(){
+    document.querySelectorAll('.option').forEach(function(label){
+      var input = label.querySelector('input[type="radio"]');
+      if (input) label.classList.toggle('active', input.checked);
+    });
+    document.getElementById('cardNote').classList.toggle('show', selected('plata') === 'card');
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(function(input){
+    input.addEventListener('change', syncOptions);
+  });
+
+  document.getElementById('checkoutForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = document.getElementById('submitBtn');
+    var spin = document.getElementById('spin');
+    var err = document.getElementById('err');
+    var prenume = document.getElementById('prenume').value.trim();
+    var nume = document.getElementById('nume').value.trim();
+    var strada = document.getElementById('strada').value.trim();
+    var apartament = document.getElementById('apartament').value.trim();
+    var localitate = document.getElementById('localitate').value.trim();
+    var judet = document.getElementById('judet').value.trim();
+
+    var data = {
+      email: document.getElementById('email').value.trim(),
+      nume: (prenume + ' ' + nume).trim(),
+      telefon: document.getElementById('telefon').value.trim(),
+      localitate: localitate + ', ' + judet,
+      adresa: [strada, apartament, document.getElementById('codPostal').value.trim()].filter(Boolean).join(', '),
+      cui: document.getElementById('cui').value.trim(),
+      livrare: 'curier',
+      plata: selected('plata'),
+      facturare: selected('facturare'),
+      newsletter: document.getElementById('newsletter').checked,
+      bump: hasBump,
+      fbt: hasBump,
+      total: total()
+    };
+
+    err.style.display = 'none';
+    btn.disabled = true;
+    spin.style.display = 'block';
+
+    try {
+      var r = await fetch('/api/order', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      if(!r.ok) throw new Error('order failed');
+      window.location.href = 'multumim.html?total=' + total() + '&tel=' + encodeURIComponent(data.telefon) + '&plata=' + encodeURIComponent(data.plata);
+    } catch(ex) {
+      btn.disabled = false;
+      spin.style.display = 'none';
+      err.style.display = 'block';
+    }
+  });
+
+  updateSummary();
+  syncOptions();
+</script>
+</body>
+</html>

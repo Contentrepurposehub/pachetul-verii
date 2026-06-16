@@ -27,12 +27,12 @@
   <div class="card">
     <div class="check">✅</div>
     <h1>Comanda ta a fost înregistrată!</h1>
-    <p>Te sunăm pentru confirmare, apoi curierul ajunge la tine în <b>1–3 zile lucrătoare</b>. Plătești la livrare, după ce vezi coletul.</p>
+    <p id="confirmText">Te sunăm pentru confirmare, apoi curierul ajunge la tine în <b>1–3 zile lucrătoare</b>.</p>
 
     <div class="upsell" id="upsell">
       <img src="img/ventilator-mana-alb-1x1.jpg" alt="Ventilator de mână">
       <b>Stai puțin — mai vrei unul?</b>
-      <p style="margin-top:6px">Adaugă <b>încă un ventilator de mână turbo</b> (pentru partener(ă), copil sau birou) la <s>99 lei</s> <b style="color:#e56700">doar 49 lei</b> — îl punem în același colet, fără transport în plus.</p>
+      <p style="margin-top:6px">Adaugă <b>încă un ventilator de mână turbo</b> (pentru partener(ă), copil sau birou) la <s>99 lei</s> <b style="color:#e56700">doar 49 lei</b> — îl punem în același colet.</p>
       <button class="btn" id="upsellBtn">DA, ADAUGĂ-L ÎN COLETUL MEU (+49 lei)</button>
       <div class="small">Oferta e valabilă doar acum, pe această pagină.</div>
     </div>
@@ -41,8 +41,12 @@
 <script>
   var META_PIXEL_ID = ""; // <- același Pixel ID ca pe index.html
   var params = new URLSearchParams(location.search);
-  var total = parseInt(params.get('total') || '149', 10);
+  var total = parseInt(params.get('total') || '195', 10);
   var tel = params.get('tel') || '';
+  var plata = params.get('plata') || 'ramburs';
+  document.getElementById('confirmText').innerHTML = plata === 'card'
+    ? 'Te sunăm pentru confirmare, apoi primești linkul de plată securizat cu cardul.'
+    : 'Te sunăm pentru confirmare, apoi curierul ajunge la tine în <b>1–3 zile lucrătoare</b>. Plătești la livrare, după ce vezi coletul.';
 
   if (META_PIXEL_ID) {
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

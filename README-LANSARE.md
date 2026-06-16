@@ -2,7 +2,7 @@
 
 ## Ce este acest proiect
 Landing page de vânzare directă (COD/ramburs) pentru oferta „Pachetul Verii":
-WindWaver + ventilator de mână cadou = 149 lei, bump portofel RFID +39 lei,
+WindWaver + ventilator de mână cadou = 195 lei, bump ventilator RGB +91 lei,
 upsell pe pagina de mulțumire +49 lei.
 
 ## Pașii de lansare (în ordine)
@@ -44,7 +44,7 @@ Vercel → proiect → Logs (caută `[ORDER]`). Dar configurează Telegram înai
 ### 6. Testează TOT înainte de reclame
 - [ ] Deschide site-ul pe TELEFON (acolo vin 95% din vizitatori)
 - [ ] Plasează o comandă de test → verifică că primești mesajul pe Telegram
-- [ ] Bifează bump-ul → totalul devine 188 lei
+- [ ] Bifează bump-ul → totalul devine 286 lei
 - [ ] Pe pagina de mulțumire, apasă upsell-ul → vine al doilea mesaj pe Telegram
 - [ ] Verifică Pixelul cu extensia Chrome „Meta Pixel Helper"
 
@@ -59,7 +59,7 @@ Vezi `/Users/galman/Downloads/produse-ro/reclame/pachetul-verii-reclame.md`
 - După epuizarea WindWaver: schimbăm oferta pe ventilatorul de birou (vorbim atunci).
 
 ## Economia per comandă (referință)
-- Comandă simplă 149 lei: cost produse 44 + curier ~20 → contribuție 85 lei
-- Cu bump (188 lei): +30 lei profit → contribuție 115 lei
+- Comandă simplă 195 lei: actualizează costurile produselor și curierului înainte de reclame
+- Cu bump (286 lei): include ventilatorul RGB în același colet
 - Cu upsell (+49): +35 lei profit
 - Ținta de cost pe comandă din reclame (CPA): sub 35 lei
