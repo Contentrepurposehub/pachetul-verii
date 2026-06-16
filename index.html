@@ -232,9 +232,21 @@
 <section>
   <div class="wrap">
     <h2>Cumpărate de obicei împreună</h2>
-    <div class="fbt-empty" id="fbtSlot">
-      Aici va apărea produsul recomandat — se adaugă în curând. <br>(Vei putea bifa „adaugă la comandă" și se include în același colet, cu transport gratuit.)
+    <label class="fbt">
+      <input type="checkbox" id="fbtCheck">
+      <img src="img/rgb-fan-thumb.jpg" alt="Ventilator de birou cu iluminare RGB">
+      <div>
+        <b>Adaugă: Ventilator de Birou cu Iluminare RGB</b>
+        <div class="pp">5 moduri de lumini · încărcare USB-C · design compact premium</div>
+        <div style="margin-top:4px"><b style="color:var(--cta-d);font-size:16px">+91 lei</b> <span class="pp">— se adaugă în același colet, fără transport în plus</span></div>
+      </div>
+    </label>
+    <div class="media" style="margin-top:14px">
+      <video muted loop playsinline preload="none" poster="video/rgb-poster.jpg" controls>
+        <source src="video/rgb.mp4" type="video/mp4">
+      </video>
     </div>
+    <img src="img/rgb-specificatii.jpg" alt="Ventilator RGB: 5 moduri de lumini, încărcare USB-C, autonomie lungă" loading="lazy" style="border-radius:14px;border:1px solid var(--line);margin-top:14px">
   </div>
 </section>
 
@@ -258,6 +270,7 @@
         <input type="text" id="adresa" name="adresa" required placeholder="ex: Str. Florilor nr. 10, bl. A2, ap. 7" autocomplete="street-address">
 
         <div class="sumrow"><span>Pachet Răcoare Vară</span><span>195 lei</span></div>
+        <div class="sumrow" id="fbtRow" style="display:none"><span>+ Ventilator RGB de birou</span><span>91 lei</span></div>
         <div class="sumrow"><span>Transport</span><span>GRATUIT</span></div>
         <div class="sumtot"><span>Total la livrare:</span><span id="total">195 lei</span></div>
 
@@ -320,9 +333,19 @@
   // order
   var form = document.getElementById('orderForm');
   var firedCheckout = false;
-  // base total; FBT add-on hooks in here when 3rd product is added
-  window.FBT_PRICE = 0;
+  // base total; FBT add-on (ventilator RGB de birou)
+  window.FBT_PRICE = 91;
+  window.fbtChecked = false;
   function total(){ return 195 + (window.fbtChecked ? window.FBT_PRICE : 0); }
+
+  var fbtCheck = document.getElementById('fbtCheck');
+  if (fbtCheck) {
+    fbtCheck.addEventListener('change', function(){
+      window.fbtChecked = fbtCheck.checked;
+      document.getElementById('fbtRow').style.display = fbtCheck.checked ? 'flex' : 'none';
+      document.getElementById('total').textContent = total() + ' lei';
+    });
+  }
 
   form.addEventListener('focusin', function(){
     if(!firedCheckout && window.fbq){ fbq('track','InitiateCheckout'); firedCheckout=true; }
